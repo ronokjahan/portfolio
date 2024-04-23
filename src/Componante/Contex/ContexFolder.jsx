@@ -17,14 +17,27 @@ const removeFromCart=(itemId)=>{
         {...prev,[itemId]:prev[itemId]-1}
     ))
 }
-useEffect(()=>{
-console.log(carItem);
-},[carItem])
+const gettotalCartamount=()=>{
+    let totalamount=0
+    for(const item in carItem){
+        if(carItem[item]>0){
+            let iteminfo=food_list.find((product)=>product._id===item)
+totalamount +=iteminfo.price*carItem[item]
+        }
+       
+    }
+    return totalamount
+}
+
+
+
+
     const contexValue={
 food_list,
 addcart,
 removeFromCart,
 carItem,
+gettotalCartamount
 
 
     }
